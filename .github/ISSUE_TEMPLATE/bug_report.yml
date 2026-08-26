@@ -1,0 +1,97 @@
+name: Bug report
+description: Report an Epson L120 installation or printing problem
+title: "[Bug] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting a problem. Please include enough environment detail to distinguish package, CUPS, USB, and printer-rendering failures.
+
+  - type: input
+    id: macos
+    attributes:
+      label: macOS version
+      placeholder: "Example: macOS 26.x"
+    validations:
+      required: true
+
+  - type: input
+    id: architecture
+    attributes:
+      label: Mac / architecture
+      description: Include your Mac chip/model if known. `uname -m` should currently report arm64 for supported systems.
+      placeholder: "Example: M4 MacBook Air / arm64"
+    validations:
+      required: true
+
+  - type: input
+    id: cups
+    attributes:
+      label: CUPS version
+      description: Run `cups-config --version`.
+      placeholder: "Example: 2.3.4"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: install_method
+    attributes:
+      label: Installation method
+      options:
+        - GitHub Release .pkg
+        - Built from source with install.sh
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: Driver/package version
+      placeholder: "Example: 0.1.0"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: usb_detected
+    attributes:
+      label: Is the L120 detected over USB?
+      description: Check with `lpinfo -v | grep -i L120`. Redact the serial portion of the URI if desired.
+      options:
+        - "Yes"
+        - "No"
+        - "Not sure"
+    validations:
+      required: true
+
+  - type: textarea
+    id: behavior
+    attributes:
+      label: What happened?
+      description: Describe what you expected and what happened instead.
+    validations:
+      required: true
+
+  - type: textarea
+    id: queue
+    attributes:
+      label: Queue status
+      description: Paste the output of `lpstat -p Epson_L120` and `lpstat -v Epson_L120` if the queue exists. Redact a USB serial number if desired.
+      render: shell
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant command output
+      description: Paste the shortest command output that shows the failure. Do not include passwords or other secrets.
+      render: shell
+
+  - type: checkboxes
+    id: scope
+    attributes:
+      label: Checks
+      options:
+        - label: I am reporting an Epson L120 issue.
+          required: true
+        - label: I have removed or redacted any printer serial number I do not want to post publicly.
+          required: true
