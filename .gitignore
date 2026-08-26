@@ -1,0 +1,17 @@
+work/
+stage/
+build/
+
+*.ras
+*.bin
+*.tar.gz
+*.tar.xz
+
+*.o
+*.lo
+*.la
+*.dylib
+
+.DS_Store
+*.tmp
+*.log

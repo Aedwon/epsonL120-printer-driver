@@ -1,0 +1,508 @@
+*PPD-Adobe: "4.3"
+*% PPD file for CUPS/Gutenprint.
+*% Copyright 1993-2008 by Mike Sweet and Robert Krawitz.
+*% This program is free software; you can redistribute it and/or
+*% modify it under the terms of the GNU General Public License,
+*% either version 2, or (at your option) any later version,
+*% as published by the Free Software Foundation.
+*%
+*% This program is distributed in the hope that it will be useful, but
+*% WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+*% or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
+*% for more details.
+*%
+*% You should have received a copy of the GNU General Public License
+*% along with this program.  If not, see <https://www.gnu.org/licenses/>.
+*%
+*FormatVersion:	"4.3"
+*FileVersion:	"5.3.5"
+*LanguageVersion: English
+*LanguageEncoding: ISOLatin1
+*PCFileName:	"STP04830.PPD"
+*Manufacturer:	"Epson"
+*Product:	"(Epson L120)"
+*ModelName:     "Epson L120"
+*ShortNickName: "Epson L120"
+*NickName:      "Epson L120 - CUPS+Gutenprint v5.3.5 Simplified"
+*PSVersion:	"(3010.000) 0"
+*LanguageLevel:	"3"
+*ColorDevice:	True
+*DefaultColorSpace:	RGB
+*cupsManualCopies: True
+*cupsFilter:	"application/vnd.cups-command 33 commandtoepson"
+*cupsCommands:   "Clean PrintSelfTestPage "
+*FileSystem:	False
+*LandscapeOrientation: Plus90
+*TTRasterizer:	Type42
+*cupsVersion:	1.2
+*cupsFilter:	"application/vnd.cups-raster 100 rastertogutenprint.5.3"
+*cupsLanguages: "ca cs da de el en_GB es fi fr gl hr hu is it ja ka nb nl pl pt ro ru sk sl sv tr uk vi zh_CN zh_TW"
+*cupsICCProfile Gray../Grayscale:	"/System/Library/ColorSync/Profiles/sRGB Profile.icc"
+*cupsICCProfile RGB../Color:	"/System/Library/ColorSync/Profiles/sRGB Profile.icc"
+*cupsICCProfile CMYK../Color:	"/System/Library/ColorSync/Profiles/Generic CMYK Profile.icc"
+*APSupportsCustomColorMatching: true
+*APDefaultCustomColorMatchingProfile: sRGB
+*APCustomColorMatchingProfile: sRGB
+
+*StpDriverName:	"escp2-l120"
+*StpDriverModelFamily:	"80_escp2"
+*StpPPDLocation: "/usr/share/cups/model/gutenprint/5.3/C/ppd/stp-escp2-l120.5.3.sim.ppd"
+*StpLocale:	"C"
+*VariablePaperSize: true
+
+*OpenUI *PageSize/Media Size: PickOne
+*OPOptionHints PageSize: "dropdown"
+*OrderDependency: 10 AnySetup *PageSize
+*StpStpPageSize: 0 1 2 0 255 0.000 0.000 0.000
+*DefaultPageSize: Letter
+*StpDefaultPageSize: Letter
+*PageSize Letter/Letter:	"<</PageSize[612.000 792.000]/ImagingBBox null>>setpagedevice"
+*PageSize Legal/Legal:	"<</PageSize[612.000 1008.000]/ImagingBBox null>>setpagedevice"
+*PageSize Executive/Executive:	"<</PageSize[522.000 756.000]/ImagingBBox null>>setpagedevice"
+*PageSize Postcard/Postcard:	"<</PageSize[283.000 416.000]/ImagingBBox null>>setpagedevice"
+*PageSize CD5Inch/CD - 5 inch:	"<</PageSize[329.000 329.000]/ImagingBBox null>>setpagedevice"
+*PageSize CD3Inch/CD - 3 inch:	"<</PageSize[184.000 184.000]/ImagingBBox null>>setpagedevice"
+*PageSize CDCustom/CD - Custom:	"<</PageSize[340.000 340.000]/ImagingBBox null>>setpagedevice"
+*PageSize w144h432/2x6:	"<</PageSize[144.000 432.000]/ImagingBBox null>>setpagedevice"
+*PageSize w288h432/4x6:	"<</PageSize[288.000 432.000]/ImagingBBox null>>setpagedevice"
+*PageSize w288h432J/KG:	"<</PageSize[288.000 432.000]/ImagingBBox null>>setpagedevice"
+*PageSize Statement/Manual:	"<</PageSize[396.000 612.000]/ImagingBBox null>>setpagedevice"
+*PageSize A4/A4:	"<</PageSize[595.000 842.000]/ImagingBBox null>>setpagedevice"
+*CloseUI: *PageSize
+
+*OpenUI *PageRegion/Media Size: PickOne
+*OPOptionHints PageRegion: "dropdown"
+*OrderDependency: 10 AnySetup *PageRegion
+*DefaultPageRegion: Letter
+*StpDefaultPageRegion: Letter
+*PageRegion Letter/Letter:	"<</PageSize[612.000 792.000]/ImagingBBox null>>setpagedevice"
+*PageRegion Legal/Legal:	"<</PageSize[612.000 1008.000]/ImagingBBox null>>setpagedevice"
+*PageRegion Executive/Executive:	"<</PageSize[522.000 756.000]/ImagingBBox null>>setpagedevice"
+*PageRegion Postcard/Postcard:	"<</PageSize[283.000 416.000]/ImagingBBox null>>setpagedevice"
+*PageRegion CD5Inch/CD - 5 inch:	"<</PageSize[329.000 329.000]/ImagingBBox null>>setpagedevice"
+*PageRegion CD3Inch/CD - 3 inch:	"<</PageSize[184.000 184.000]/ImagingBBox null>>setpagedevice"
+*PageRegion CDCustom/CD - Custom:	"<</PageSize[340.000 340.000]/ImagingBBox null>>setpagedevice"
+*PageRegion w144h432/2x6:	"<</PageSize[144.000 432.000]/ImagingBBox null>>setpagedevice"
+*PageRegion w288h432/4x6:	"<</PageSize[288.000 432.000]/ImagingBBox null>>setpagedevice"
+*PageRegion w288h432J/KG:	"<</PageSize[288.000 432.000]/ImagingBBox null>>setpagedevice"
+*PageRegion Statement/Manual:	"<</PageSize[396.000 612.000]/ImagingBBox null>>setpagedevice"
+*PageRegion A4/A4:	"<</PageSize[595.000 842.000]/ImagingBBox null>>setpagedevice"
+*CloseUI: *PageRegion
+
+*DefaultImageableArea: Letter
+*StpDefaultImageableArea: Letter
+*ImageableArea Letter/Letter:	"0.000 0.000 612.000 792.000"
+*ImageableArea Legal/Legal:	"0.000 0.000 612.000 1008.000"
+*ImageableArea Executive/Executive:	"0.000 0.000 522.000 756.000"
+*ImageableArea Postcard/Postcard:	"0.000 0.000 283.000 416.000"
+*ImageableArea CD5Inch/CD - 5 inch:	"0.000 0.000 329.000 329.000"
+*ImageableArea CD3Inch/CD - 3 inch:	"0.000 0.000 184.000 184.000"
+*ImageableArea CDCustom/CD - Custom:	"0.000 0.000 340.000 340.000"
+*ImageableArea w144h432/2x6:	"0.000 0.000 144.000 432.000"
+*ImageableArea w288h432/4x6:	"0.000 0.000 288.000 432.000"
+*ImageableArea w288h432J/KG:	"0.000 0.000 288.000 432.000"
+*ImageableArea Statement/Manual:	"0.000 0.000 396.000 612.000"
+*ImageableArea A4/A4:	"0.000 0.000 595.000 842.000"
+
+*DefaultPaperDimension: Letter
+*StpDefaultPaperDimension: Letter
+*PaperDimension Letter/Letter:	"612.000 792.000"
+*PaperDimension Legal/Legal:	"612.000 1008.000"
+*PaperDimension Executive/Executive:	"522.000 756.000"
+*PaperDimension Postcard/Postcard:	"283.000 416.000"
+*PaperDimension CD5Inch/CD - 5 inch:	"329.000 329.000"
+*PaperDimension CD3Inch/CD - 3 inch:	"184.000 184.000"
+*PaperDimension CDCustom/CD - Custom:	"340.000 340.000"
+*PaperDimension w144h432/2x6:	"144.000 432.000"
+*PaperDimension w288h432/4x6:	"288.000 432.000"
+*PaperDimension w288h432J/KG:	"288.000 432.000"
+*PaperDimension Statement/Manual:	"396.000 612.000"
+*PaperDimension A4/A4:	"595.000 842.000"
+
+*MaxMediaWidth:  "612.000"
+*MaxMediaHeight: "86400.000"
+*HWMargins:      0.000 0.000 0.000 0.000
+*CustomPageSize True: "pop pop pop <</PageSize[5 -2 roll]/ImagingBBox null>>setpagedevice"
+*ParamCustomPageSize Width:        1 points 144.000 612.000
+*ParamCustomPageSize Height:       2 points 144.000 86400.000
+*ParamCustomPageSize WidthOffset:  3 points 0 0
+*ParamCustomPageSize HeightOffset: 4 points 0 0
+*ParamCustomPageSize Orientation:  5 int 0 0
+
+*ColorKeyWords: "ColorModel"
+*OpenUI *ColorModel/Color Model: PickOne
+*OPOptionHints ColorModel: "radiobuttons"
+*OrderDependency: 2 AnySetup *ColorModel
+*DefaultColorModel: RGB
+*StpDefaultColorModel: RGB
+*ColorModel Gray/Grayscale:	"<</cupsColorSpace 0/cupsColorOrder 0/cupsBitsPerColor 8/cupsPreferredBitsPerColor 16>>setpagedevice"
+*ColorModel Black/Inverted Grayscale:	"<</cupsColorSpace 3/cupsColorOrder 0/cupsBitsPerColor 8/cupsPreferredBitsPerColor 16>>setpagedevice"
+*ColorModel RGB/RGB Color:	"<</cupsColorSpace 1/cupsColorOrder 0/cupsBitsPerColor 8/cupsPreferredBitsPerColor 16>>setpagedevice"
+*ColorModel CMY/CMY Color:	"<</cupsColorSpace 4/cupsColorOrder 0/cupsBitsPerColor 8/cupsPreferredBitsPerColor 16>>setpagedevice"
+*ColorModel CMYK/CMYK:	"<</cupsColorSpace 6/cupsColorOrder 0/cupsBitsPerColor 8/cupsPreferredBitsPerColor 16>>setpagedevice"
+*ColorModel KCMY/KCMY:	"<</cupsColorSpace 8/cupsColorOrder 0/cupsBitsPerColor 8/cupsPreferredBitsPerColor 16>>setpagedevice"
+*CloseUI: *ColorModel
+
+*ColorKeyWords: "MediaType"
+*OpenUI *MediaType/Media Type: PickOne
+*OPOptionHints MediaType: "dropdown"
+*OrderDependency: 10 AnySetup *MediaType
+*StpStpMediaType: 0 1 0 0 255 0.000 0.000 0.000
+*DefaultMediaType: Plain
+*StpDefaultMediaType: Plain
+*MediaType Plain/Plain Paper:	"<</MediaType(Plain)>>setpagedevice"
+*MediaType PlainFast/Plain Paper Fast Load:	"<</MediaType(PlainFast)>>setpagedevice"
+*MediaType Postcard/Postcard:	"<</MediaType(Postcard)>>setpagedevice"
+*MediaType GlossyFilm/Glossy Film:	"<</MediaType(GlossyFilm)>>setpagedevice"
+*MediaType Transparency/Transparencies:	"<</MediaType(Transparency)>>setpagedevice"
+*MediaType Envelope/Envelopes:	"<</MediaType(Envelope)>>setpagedevice"
+*MediaType BackFilm/Back Light Film:	"<</MediaType(BackFilm)>>setpagedevice"
+*MediaType Matte/Matte Paper:	"<</MediaType(Matte)>>setpagedevice"
+*MediaType MatteHeavy/Matte Paper Heavyweight:	"<</MediaType(MatteHeavy)>>setpagedevice"
+*MediaType Inkjet/Inkjet Paper:	"<</MediaType(Inkjet)>>setpagedevice"
+*MediaType Coated/Photo Quality Inkjet Paper:	"<</MediaType(Coated)>>setpagedevice"
+*MediaType Photo/Photo Paper:	"<</MediaType(Photo)>>setpagedevice"
+*MediaType GlossyPhoto/Premium Glossy Photo Paper:	"<</MediaType(GlossyPhoto)>>setpagedevice"
+*MediaType Semigloss/Premium Semigloss Photo Paper:	"<</MediaType(Semigloss)>>setpagedevice"
+*MediaType Luster/Premium Luster Photo Paper:	"<</MediaType(Luster)>>setpagedevice"
+*MediaType GlossyPaper/Photo Quality Glossy Paper:	"<</MediaType(GlossyPaper)>>setpagedevice"
+*MediaType Ilford/Ilford Heavy Paper:	"<</MediaType(Ilford)>>setpagedevice"
+*MediaType ColorLife/ColorLife Paper:	"<</MediaType(ColorLife)>>setpagedevice"
+*MediaType Other/Other:	"<</MediaType(Other)>>setpagedevice"
+*CloseUI: *MediaType
+
+*ColorKeyWords: "Quality"
+*OpenUI *StpQuality/Print Quality: PickOne
+*OPOptionHints Quality: "radiobuttons"
+*OrderDependency: 10 AnySetup *StpQuality
+*StpStpQuality: 0 1 0 0 255 0.000 0.000 0.000
+*DefaultStpQuality: Standard
+*StpDefaultStpQuality: Standard
+*StpQuality None/Manual Control:	"<</HWResolution[720 360]/cupsRowFeed 1>>setpagedevice"
+*StpQuality Economy/Economy:	"<</HWResolution[360 180]/cupsRowFeed 2>>setpagedevice"
+*StpQuality Draft/Draft:	"<</HWResolution[360 360]/cupsRowFeed 3>>setpagedevice"
+*StpQuality Standard/Standard:	"<</HWResolution[720 360]/cupsRowFeed 4>>setpagedevice"
+*StpQuality High/High:	"<</HWResolution[720 720]/cupsRowFeed 5>>setpagedevice"
+*StpQuality Photo/Photo:	"<</HWResolution[1440 720]/cupsRowFeed 6>>setpagedevice"
+*StpQuality HighPhoto/Super Photo:	"<</HWResolution[1440 1440]/cupsRowFeed 7>>setpagedevice"
+*StpQuality UltraPhoto/Ultra Photo:	"<</HWResolution[2880 1440]/cupsRowFeed 8>>setpagedevice"
+*StpQuality Best/Best:	"<</HWResolution[2880 1440]/cupsRowFeed 9>>setpagedevice"
+*CloseUI: *StpQuality
+
+*OpenUI *OutputOrder/Output Order: PickOne
+*OPOptionHints OutputOrder: "radiobuttons"
+*OrderDependency: 10 AnySetup *OutputOrder
+*DefaultOutputOrder: Reverse
+*StpDefaultOutputOrder: Reverse
+*OutputOrder Normal/Normal: ""
+*OutputOrder Reverse/Reverse: ""
+*CloseUI: *OutputOrder
+
+*OpenUI *StpiShrinkOutput/Shrink Page If Necessary to Fit Borders: PickOne
+*OPOptionHints StpiShrinkOutput: "radiobuttons"
+*OrderDependency: 10 AnySetup *StpiShrinkOutput
+*DefaultStpiShrinkOutput: Shrink
+*StpDefaultStpiShrinkOutput: Shrink
+*StpiShrinkOutput Shrink/Shrink (print the whole page): ""
+*StpiShrinkOutput Crop/Crop (preserve dimensions): ""
+*StpiShrinkOutput Expand/Expand (use maximum page area): ""
+*CloseUI: *StpiShrinkOutput
+
+*OpenGroup: C0L0/Printer Features Common
+
+*ColorKeyWords: "StpInkSet"
+*OpenUI *StpInkSet/Ink Set: PickOne
+*OrderDependency: 10 AnySetup *StpInkSet
+*OPOptionHints StpInkSet: "radiobuttons"
+*StpStpInkSet: 0 1 0 0 255 0.000 0.000 0.000
+*DefaultStpInkSet: None
+*StpDefaultStpInkSet: None
+*StpInkSet None/EPSON Standard Inks: ""
+*StpInkSet Quadtone/Quadtone: ""
+*StpInkSet MISQuadtone/MIS Quadtone: ""
+*CloseUI: *StpInkSet
+
+*OpenUI *StpFullBleed/Borderless: PickOne
+*OrderDependency: 10 AnySetup *StpFullBleed
+*OPOptionHints StpFullBleed: "checkbox"
+*StpStpFullBleed: 2 1 0 0 255 0.000 0.000 0.000
+*DefaultStpFullBleed: False
+*StpDefaultStpFullBleed: False
+*StpFullBleed False/No: ""
+*StpFullBleed True/Yes: ""
+*CloseUI: *StpFullBleed
+
+*CloseGroup: C0L0/Printer Features Common
+
+*OpenGroup: C1L0/Output Control Common
+
+*ColorKeyWords: "StpColorCorrection"
+*OpenUI *StpColorCorrection/Color Correction: PickOne
+*OrderDependency: 10 AnySetup *StpColorCorrection
+*OPOptionHints StpColorCorrection: "dropdown"
+*StpStpColorCorrection: 0 1 1 0 255 0.000 0.000 0.000
+*DefaultStpColorCorrection: None
+*StpDefaultStpColorCorrection: None
+*StpColorCorrection None/Default: ""
+*StpColorCorrection Accurate/High Accuracy: ""
+*StpColorCorrection Bright/Bright Colors: ""
+*StpColorCorrection Hue/Correct Hue Only: ""
+*StpColorCorrection Uncorrected/Uncorrected: ""
+*StpColorCorrection Desaturated/Desaturated: ""
+*StpColorCorrection Threshold/Threshold: ""
+*StpColorCorrection Density/Density: ""
+*StpColorCorrection Raw/Raw: ""
+*StpColorCorrection Predithered/Pre-Dithered: ""
+*CloseUI: *StpColorCorrection
+
+*ColorKeyWords: "StpBrightness"
+*OpenUI *StpBrightness/Brightness: PickOne
+*OrderDependency: 10 AnySetup *StpBrightness
+*OPOptionHints StpBrightness: "slider input spinbox"
+*StpStpBrightness: 3 1 1 0 255 0.000 2.000 1.000
+*DefaultStpBrightness: None
+*StpDefaultStpBrightness: None
+*StpBrightness 0/0.000: ""
+*StpBrightness 100/0.100: ""
+*StpBrightness 200/0.200: ""
+*StpBrightness 300/0.300: ""
+*StpBrightness 400/0.400: ""
+*StpBrightness 500/0.500: ""
+*StpBrightness 600/0.600: ""
+*StpBrightness 700/0.700: ""
+*StpBrightness 800/0.800: ""
+*StpBrightness 900/0.900: ""
+*StpBrightness None/1.000: ""
+*StpBrightness 1100/1.100: ""
+*StpBrightness 1200/1.200: ""
+*StpBrightness 1300/1.300: ""
+*StpBrightness 1400/1.400: ""
+*StpBrightness 1500/1.500: ""
+*StpBrightness 1600/1.600: ""
+*StpBrightness 1700/1.700: ""
+*StpBrightness 1800/1.800: ""
+*StpBrightness 1900/1.900: ""
+*StpBrightness 2000/2.000: ""
+*CloseUI: *StpBrightness
+
+*CustomStpBrightness True: "pop"
+*ParamCustomStpBrightness Value/Value: 1 real 0.000 2.000
+
+*ColorKeyWords: "StpContrast"
+*OpenUI *StpContrast/Contrast: PickOne
+*OrderDependency: 10 AnySetup *StpContrast
+*OPOptionHints StpContrast: "slider input spinbox"
+*StpStpContrast: 3 1 1 0 255 0.000 4.000 1.000
+*DefaultStpContrast: None
+*StpDefaultStpContrast: None
+*StpContrast 0/0.000: ""
+*StpContrast 100/0.100: ""
+*StpContrast 200/0.200: ""
+*StpContrast 300/0.300: ""
+*StpContrast 400/0.400: ""
+*StpContrast 500/0.500: ""
+*StpContrast 600/0.600: ""
+*StpContrast 700/0.700: ""
+*StpContrast 800/0.800: ""
+*StpContrast 900/0.900: ""
+*StpContrast None/1.000: ""
+*StpContrast 1100/1.100: ""
+*StpContrast 1200/1.200: ""
+*StpContrast 1300/1.300: ""
+*StpContrast 1400/1.400: ""
+*StpContrast 1500/1.500: ""
+*StpContrast 1600/1.600: ""
+*StpContrast 1700/1.700: ""
+*StpContrast 1800/1.800: ""
+*StpContrast 1900/1.900: ""
+*StpContrast 2000/2.000: ""
+*StpContrast 2100/2.100: ""
+*StpContrast 2200/2.200: ""
+*StpContrast 2300/2.300: ""
+*StpContrast 2400/2.400: ""
+*StpContrast 2500/2.500: ""
+*StpContrast 2600/2.600: ""
+*StpContrast 2700/2.700: ""
+*StpContrast 2800/2.800: ""
+*StpContrast 2900/2.900: ""
+*StpContrast 3000/3.000: ""
+*StpContrast 3100/3.100: ""
+*StpContrast 3200/3.200: ""
+*StpContrast 3300/3.300: ""
+*StpContrast 3400/3.400: ""
+*StpContrast 3500/3.500: ""
+*StpContrast 3600/3.600: ""
+*StpContrast 3700/3.700: ""
+*StpContrast 3800/3.800: ""
+*StpContrast 3900/3.900: ""
+*StpContrast 4000/4.000: ""
+*CloseUI: *StpContrast
+
+*CustomStpContrast True: "pop"
+*ParamCustomStpContrast Value/Value: 1 real 0.000 4.000
+
+*ColorKeyWords: "StpSaturation"
+*OpenUI *StpSaturation/Saturation: PickOne
+*OrderDependency: 10 AnySetup *StpSaturation
+*OPOptionHints StpSaturation: "slider input spinbox"
+*StpStpSaturation: 3 1 1 0 255 0.000 9.000 1.000
+*DefaultStpSaturation: None
+*StpDefaultStpSaturation: None
+*StpSaturation 0/0.000: ""
+*StpSaturation 100/0.100: ""
+*StpSaturation 200/0.200: ""
+*StpSaturation 300/0.300: ""
+*StpSaturation 400/0.400: ""
+*StpSaturation 500/0.500: ""
+*StpSaturation 600/0.600: ""
+*StpSaturation 700/0.700: ""
+*StpSaturation 800/0.800: ""
+*StpSaturation 900/0.900: ""
+*StpSaturation None/1.000: ""
+*StpSaturation 1100/1.100: ""
+*StpSaturation 1200/1.200: ""
+*StpSaturation 1300/1.300: ""
+*StpSaturation 1400/1.400: ""
+*StpSaturation 1500/1.500: ""
+*StpSaturation 1600/1.600: ""
+*StpSaturation 1700/1.700: ""
+*StpSaturation 1800/1.800: ""
+*StpSaturation 1900/1.900: ""
+*StpSaturation 2000/2.000: ""
+*StpSaturation 2100/2.100: ""
+*StpSaturation 2200/2.200: ""
+*StpSaturation 2300/2.300: ""
+*StpSaturation 2400/2.400: ""
+*StpSaturation 2500/2.500: ""
+*StpSaturation 2600/2.600: ""
+*StpSaturation 2700/2.700: ""
+*StpSaturation 2800/2.800: ""
+*StpSaturation 2900/2.900: ""
+*StpSaturation 3000/3.000: ""
+*StpSaturation 3100/3.100: ""
+*StpSaturation 3200/3.200: ""
+*StpSaturation 3300/3.300: ""
+*StpSaturation 3400/3.400: ""
+*StpSaturation 3500/3.500: ""
+*StpSaturation 3600/3.600: ""
+*StpSaturation 3700/3.700: ""
+*StpSaturation 3800/3.800: ""
+*StpSaturation 3900/3.900: ""
+*StpSaturation 4000/4.000: ""
+*StpSaturation 4100/4.100: ""
+*StpSaturation 4200/4.200: ""
+*StpSaturation 4300/4.300: ""
+*StpSaturation 4400/4.400: ""
+*StpSaturation 4500/4.500: ""
+*StpSaturation 4600/4.600: ""
+*StpSaturation 4700/4.700: ""
+*StpSaturation 4800/4.800: ""
+*StpSaturation 4900/4.900: ""
+*StpSaturation 5000/5.000: ""
+*StpSaturation 5100/5.100: ""
+*StpSaturation 5200/5.200: ""
+*StpSaturation 5300/5.300: ""
+*StpSaturation 5400/5.400: ""
+*StpSaturation 5500/5.500: ""
+*StpSaturation 5600/5.600: ""
+*StpSaturation 5700/5.700: ""
+*StpSaturation 5800/5.800: ""
+*StpSaturation 5900/5.900: ""
+*StpSaturation 6000/6.000: ""
+*StpSaturation 6100/6.100: ""
+*StpSaturation 6200/6.200: ""
+*StpSaturation 6300/6.300: ""
+*StpSaturation 6400/6.400: ""
+*StpSaturation 6500/6.500: ""
+*StpSaturation 6600/6.600: ""
+*StpSaturation 6700/6.700: ""
+*StpSaturation 6800/6.800: ""
+*StpSaturation 6900/6.900: ""
+*StpSaturation 7000/7.000: ""
+*StpSaturation 7100/7.100: ""
+*StpSaturation 7200/7.200: ""
+*StpSaturation 7300/7.300: ""
+*StpSaturation 7400/7.400: ""
+*StpSaturation 7500/7.500: ""
+*StpSaturation 7600/7.600: ""
+*StpSaturation 7700/7.700: ""
+*StpSaturation 7800/7.800: ""
+*StpSaturation 7900/7.900: ""
+*StpSaturation 8000/8.000: ""
+*StpSaturation 8100/8.100: ""
+*StpSaturation 8200/8.200: ""
+*StpSaturation 8300/8.300: ""
+*StpSaturation 8400/8.400: ""
+*StpSaturation 8500/8.500: ""
+*StpSaturation 8600/8.600: ""
+*StpSaturation 8700/8.700: ""
+*StpSaturation 8800/8.800: ""
+*StpSaturation 8900/8.900: ""
+*StpSaturation 9000/9.000: ""
+*CloseUI: *StpSaturation
+
+*CustomStpSaturation True: "pop"
+*ParamCustomStpSaturation Value/Value: 1 real 0.000 9.000
+
+*ColorKeyWords: "StpImageType"
+*OpenUI *StpImageType/Image Type: PickOne
+*OrderDependency: 10 AnySetup *StpImageType
+*OPOptionHints StpImageType: "dropdown"
+*StpStpImageType: 0 1 1 0 255 0.000 0.000 0.000
+*DefaultStpImageType: TextGraphics
+*StpDefaultStpImageType: TextGraphics
+*StpImageType None/Manual Control: ""
+*StpImageType Text/Text: ""
+*StpImageType Graphics/Graphics: ""
+*StpImageType TextGraphics/Mixed Text and Graphics: ""
+*StpImageType Photo/Photograph: ""
+*StpImageType LineArt/Line Art: ""
+*CloseUI: *StpImageType
+
+*CloseGroup: C1L0/Output Control Common
+
+*APPrinterPreset Text/Text: "*StpImageType Text"
+*APPrinterPreset Graphics/Graphics: "*StpImageType Graphics"
+*APPrinterPreset TextGraphics/Mixed Text and Graphics: "*StpImageType TextGraphics"
+*APPrinterPreset Photo/Photograph: "*StpImageType Photo"
+*APPrinterPreset LineArt/Line Art: "*StpImageType LineArt"
+
+
+*DefaultFont: Courier
+*Font AvantGarde-Book: Standard "(001.006S)" Standard ROM
+*Font AvantGarde-BookOblique: Standard "(001.006S)" Standard ROM
+*Font AvantGarde-Demi: Standard "(001.007S)" Standard ROM
+*Font AvantGarde-DemiOblique: Standard "(001.007S)" Standard ROM
+*Font Bookman-Demi: Standard "(001.004S)" Standard ROM
+*Font Bookman-DemiItalic: Standard "(001.004S)" Standard ROM
+*Font Bookman-Light: Standard "(001.004S)" Standard ROM
+*Font Bookman-LightItalic: Standard "(001.004S)" Standard ROM
+*Font Courier: Standard "(002.004S)" Standard ROM
+*Font Courier-Bold: Standard "(002.004S)" Standard ROM
+*Font Courier-BoldOblique: Standard "(002.004S)" Standard ROM
+*Font Courier-Oblique: Standard "(002.004S)" Standard ROM
+*Font Helvetica: Standard "(001.006S)" Standard ROM
+*Font Helvetica-Bold: Standard "(001.007S)" Standard ROM
+*Font Helvetica-BoldOblique: Standard "(001.007S)" Standard ROM
+*Font Helvetica-Narrow: Standard "(001.006S)" Standard ROM
+*Font Helvetica-Narrow-Bold: Standard "(001.007S)" Standard ROM
+*Font Helvetica-Narrow-BoldOblique: Standard "(001.007S)" Standard ROM
+*Font Helvetica-Narrow-Oblique: Standard "(001.006S)" Standard ROM
+*Font Helvetica-Oblique: Standard "(001.006S)" Standard ROM
+*Font NewCenturySchlbk-Bold: Standard "(001.009S)" Standard ROM
+*Font NewCenturySchlbk-BoldItalic: Standard "(001.007S)" Standard ROM
+*Font NewCenturySchlbk-Italic: Standard "(001.006S)" Standard ROM
+*Font NewCenturySchlbk-Roman: Standard "(001.007S)" Standard ROM
+*Font Palatino-Bold: Standard "(001.005S)" Standard ROM
+*Font Palatino-BoldItalic: Standard "(001.005S)" Standard ROM
+*Font Palatino-Italic: Standard "(001.005S)" Standard ROM
+*Font Palatino-Roman: Standard "(001.005S)" Standard ROM
+*Font Symbol: Special "(001.007S)" Special ROM
+*Font Times-Bold: Standard "(001.007S)" Standard ROM
+*Font Times-BoldItalic: Standard "(001.009S)" Standard ROM
+*Font Times-Italic: Standard "(001.007S)" Standard ROM
+*Font Times-Roman: Standard "(001.007S)" Standard ROM
+*Font ZapfChancery-MediumItalic: Standard "(001.007S)" Standard ROM
+*Font ZapfDingbats: Special "(001.004S)" Standard ROM
+
+*% End of stp-escp2-l120.5.3.sim.ppd

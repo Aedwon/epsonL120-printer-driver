@@ -1,0 +1,6 @@
+EPSON L120 DRIVER TEST
+
+Apple Silicon / macOS / CUPS
+
+This page is being generated for the
+Epson L120 Gutenprint driver test.
