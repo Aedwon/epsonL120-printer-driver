@@ -1,0 +1,46 @@
+#!/bin/bash
+set -euo pipefail
+
+PREFIX="/Library/Printers/EpsonL120"
+QUEUE="Epson_L120"
+PPD="$PREFIX/Epson_L120-Gutenprint.ppd"
+
+export PATH="/usr/bin:/bin:/usr/sbin:/sbin"
+
+if [[ "$EUID" -ne 0 ]]; then
+  exec sudo /bin/bash "$0" "$@"
+fi
+
+[[ -f "$PPD" ]] || {
+  echo "ERROR: Epson L120 PPD not found at $PPD" >&2
+  exit 1
+}
+
+DEVICE_URI="${DEVICE_URI:-}"
+if [[ -z "$DEVICE_URI" ]]; then
+  DEVICE_URI="$(lpinfo -v 2>/dev/null | awk '$1 == "direct" && $2 ~ /^usb:\/\/EPSON\/L120%20Series/ { print $2; exit }')"
+fi
+
+if [[ -z "$DEVICE_URI" ]]; then
+  echo "Epson L120 runtime installed, but no Epson L120 USB device is currently detected."
+  echo "Connect and power on the printer, then run:"
+  echo "  sudo $PREFIX/bin/setup-queue"
+  exit 0
+fi
+
+if lpstat -p "$QUEUE" >/dev/null 2>&1; then
+  lpadmin -x "$QUEUE"
+fi
+
+lpadmin \
+  -p "$QUEUE" \
+  -E \
+  -v "$DEVICE_URI" \
+  -P "$PPD" \
+  -o printer-is-shared=false
+
+cupsenable "$QUEUE"
+cupsaccept "$QUEUE"
+
+printf 'Configured %s at %s\n' "$QUEUE" "$DEVICE_URI"
+lpstat -v "$QUEUE"
