@@ -11,7 +11,19 @@ Physical printing has been verified on a real Epson L120 over USB for:
 - black text;
 - cyan, magenta, yellow, and black output;
 - RGB red, green, and blue output;
-- native Apple Silicon (`arm64`) execution.
+- native Apple Silicon (`arm64`) execution;
+- the installed `Epson_L120` CUPS queue using `lp -d Epson_L120 test.pdf`.
+
+The complete verified path is:
+
+```text
+macOS application / lp
+        -> CUPS Epson_L120 queue
+        -> Apple PDF-to-raster pipeline
+        -> installed Gutenprint escp2-l120 filter
+        -> macOS USB backend
+        -> Epson L120
+```
 
 The build and install scripts are still experimental. The PPD/filter driver architecture used here is deprecated in CUPS and may require future maintenance.
 
@@ -92,7 +104,7 @@ The installer creates a printer queue named:
 Epson_L120
 ```
 
-After installation, the printer should be available to normal macOS print dialogs. A command-line smoke test can be sent with:
+After installation, the printer is available through the normal macOS CUPS printing path. The verified command-line smoke test is:
 
 ```sh
 lp -d Epson_L120 test.pdf
