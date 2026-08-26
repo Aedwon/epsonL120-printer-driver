@@ -83,7 +83,7 @@ lpadmin \
   -o printer-is-shared=false
 
 cupsenable "$QUEUE"
-accept "$QUEUE"
+cupsaccept "$QUEUE"
 
 printf '\nInstalled successfully.\n'
 printf 'Queue: %s\n' "$QUEUE"
