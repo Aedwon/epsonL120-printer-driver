@@ -1,9 +1,11 @@
 work/
 stage/
 build/
+dist/
 
 *.ras
 *.bin
+*.pkg
 *.tar.gz
 *.tar.xz
 
