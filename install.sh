@@ -10,7 +10,6 @@ PPD_SRC="$ROOT/build/Epson_L120-Gutenprint.ppd"
 FILTER_SRC="$SOURCE/src/cups/.libs/rastertogutenprint.5.3"
 LIB_SRC="$SOURCE/src/main/.libs/libgutenprint.9.dylib"
 XML_SRC="$SOURCE/src/xml"
-FILTER_WRAPPER="/usr/libexec/cups/filter/rastertoepsonl120-gutenprint"
 
 for artifact in "$PPD_SRC" "$FILTER_SRC" "$LIB_SRC"; do
   [[ -e "$artifact" ]] || {
@@ -33,26 +32,26 @@ if [[ -z "$DEVICE_URI" ]]; then
 fi
 
 if [[ "$EUID" -ne 0 ]]; then
-  echo "Administrator access is required to install the CUPS filter and printer queue."
+  echo "Administrator access is required to install the driver and create the CUPS queue."
   exec sudo env DEVICE_URI="$DEVICE_URI" /bin/bash "$0" "$@"
 fi
 
-FILTER_DST="$PREFIX/bin/rastertogutenprint.5.3"
+FILTER_DST="$PREFIX/libexec/rastertogutenprint.5.3"
 LIB_DST="$PREFIX/lib/libgutenprint.9.dylib"
 XML_DST="$PREFIX/share/gutenprint/5.3/xml"
 PPD_DST="$PREFIX/Epson_L120-Gutenprint.ppd"
+FILTER_WRAPPER="$PREFIX/bin/rastertoepsonl120-gutenprint"
 
 printf '==> Installing Epson L120 runtime into %s\n' "$PREFIX"
 rm -rf "$PREFIX"
-install -d -m 0755 "$PREFIX/bin" "$PREFIX/lib" "$PREFIX/share/gutenprint/5.3"
+install -d -m 0755 "$PREFIX/bin" "$PREFIX/libexec" "$PREFIX/lib" "$PREFIX/share/gutenprint/5.3"
 install -m 0755 "$FILTER_SRC" "$FILTER_DST"
 install -m 0755 "$LIB_SRC" "$LIB_DST"
 cp -R "$XML_SRC" "$XML_DST"
 chmod -R a+rX "$PREFIX/share"
 install -m 0644 "$PPD_SRC" "$PPD_DST"
 
-# Make the copied binaries independent of the build directory/prefix that
-# libtool used while compiling.
+# Make the copied binaries independent of whatever build prefix libtool used.
 install_name_tool -id "$LIB_DST" "$LIB_DST"
 OLD_LIB_REF="$(otool -L "$FILTER_DST" | awk '/libgutenprint\.9\.dylib/ { print $1; exit }')"
 if [[ -z "$OLD_LIB_REF" ]]; then
@@ -68,8 +67,9 @@ cat > "$FILTER_WRAPPER" <<WRAPPER
 export STP_DATA_PATH="$XML_DST"
 exec "$FILTER_DST" "\$@"
 WRAPPER
-chown root:wheel "$FILTER_WRAPPER"
-chmod 0755 "$FILTER_WRAPPER"
+chown root:wheel "$FILTER_WRAPPER" "$FILTER_DST" "$LIB_DST" "$PPD_DST"
+chmod 0755 "$FILTER_WRAPPER" "$FILTER_DST"
+chmod 0644 "$LIB_DST" "$PPD_DST"
 
 printf '==> Creating CUPS queue %s\n' "$QUEUE"
 if lpstat -p "$QUEUE" >/dev/null 2>&1; then
@@ -86,10 +86,10 @@ cupsenable "$QUEUE"
 cupsaccept "$QUEUE"
 
 printf '\nInstalled successfully.\n'
-printf 'Queue: %s\n' "$QUEUE"
-printf 'USB:   %s\n' "$DEVICE_URI"
-printf 'PPD:   %s\n' "$PPD_DST"
-printf 'Filter:%s\n\n' "$FILTER_WRAPPER"
+printf 'Queue:  %s\n' "$QUEUE"
+printf 'USB:    %s\n' "$DEVICE_URI"
+printf 'PPD:    %s\n' "$PPD_DST"
+printf 'Filter: %s\n\n' "$FILTER_WRAPPER"
 lpstat -v "$QUEUE"
 printf '\nThe printer should now appear in normal macOS print dialogs as Epson_L120.\n'
 printf 'A command-line test can be sent with: lp -d %s test.pdf\n' "$QUEUE"
