@@ -12,6 +12,10 @@ build/
 *.la
 *.dylib
 
+/test.pdf
+/color-test*.pdf
+
 .DS_Store
 *.tmp
 *.log
+*.bak
