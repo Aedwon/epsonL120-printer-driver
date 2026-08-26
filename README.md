@@ -13,12 +13,12 @@ Physical printing has been verified on a real Epson L120 over USB for:
 - RGB red, green, and blue output;
 - native Apple Silicon (`arm64`) execution.
 
-The build and install scripts are still experimental. macOS/CUPS continues to support the PPD/filter path used here, but that driver architecture is deprecated upstream and may require future maintenance.
+The build and install scripts are still experimental. The PPD/filter driver architecture used here is deprecated in CUPS and may require future maintenance.
 
 ## Requirements
 
 - Apple Silicon Mac (`arm64`)
-- macOS with CUPS 2.3.x-compatible printing tools
+- macOS with the CUPS 2.3.x printing tools
 - Xcode or Xcode Command Line Tools
 - Homebrew `pkg-config`
 
@@ -42,7 +42,7 @@ The script:
 2. applies the compile flags needed by recent Apple SDKs for legacy BSD typedefs used by the older CUPS/Gutenprint code;
 3. builds Gutenprint natively for the current Apple Silicon Mac;
 4. generates the simplified Epson L120 PPD from `gutenprint.5.3://escp2-l120/simple`;
-5. rewrites the PPD to use this project's isolated CUPS filter name.
+5. rewrites the PPD to use this project's absolute filter path under `/Library/Printers/EpsonL120`.
 
 Generated source, build products, raster files, and raw printer streams are ignored by Git.
 
@@ -76,25 +76,21 @@ Then run:
 ./install.sh
 ```
 
-The script requests administrator access only when it is ready to install the runtime and create the CUPS queue. It installs this project's files under:
+The script requests administrator access only when it is ready to install the runtime and create the CUPS queue.
+
+All driver-owned runtime files are kept under:
 
 ```text
 /Library/Printers/EpsonL120
 ```
 
-and creates an isolated CUPS filter wrapper at:
+The generated PPD uses an absolute CUPS filter path in that directory, so the installer does **not** modify `/usr/libexec/cups/filter` and does not overwrite or depend on a separate system-wide Gutenprint installation.
 
-```text
-/usr/libexec/cups/filter/rastertoepsonl120-gutenprint
-```
-
-It then creates a printer queue named:
+The installer creates a printer queue named:
 
 ```text
 Epson_L120
 ```
-
-The script does not overwrite a system-wide Gutenprint installation or install a generic `rastertogutenprint.5.3` filter into CUPS.
 
 After installation, the printer should be available to normal macOS print dialogs. A command-line smoke test can be sent with:
 
@@ -110,7 +106,7 @@ lp -d Epson_L120 test.pdf
 ./uninstall.sh
 ```
 
-This removes only the `Epson_L120` queue and files installed by this project.
+This removes only the `Epson_L120` queue and `/Library/Printers/EpsonL120`.
 
 ## Implementation notes
 
