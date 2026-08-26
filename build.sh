@@ -8,6 +8,7 @@ SOURCE="$SRCROOT/gutenprint-${VERSION}"
 TARBALL="$SRCROOT/gutenprint-${VERSION}.tar.xz"
 URL="https://downloads.sourceforge.net/gimp-print/gutenprint-${VERSION}.tar.xz"
 TARGET_PREFIX="/Library/Printers/EpsonL120"
+CUPS_FILTER="$TARGET_PREFIX/bin/rastertoepsonl120-gutenprint"
 BUILD_DIR="$ROOT/build"
 PPD="$BUILD_DIR/Epson_L120-Gutenprint.ppd"
 
@@ -110,12 +111,11 @@ STP_MODULE_PATH="$SOURCE/src/main/.libs:$SOURCE/src/main" \
 DYLD_LIBRARY_PATH="$SOURCE/src/main/.libs" \
   "$DRIVER" cat "gutenprint.5.3://escp2-l120/simple" > "$RAW_PPD"
 
-# Use a project-specific CUPS filter name so we never overwrite or depend on a
-# system-wide Gutenprint installation. Maintenance command support is omitted;
-# normal document printing only needs the raster filter.
+# CUPS allows an absolute filter program path. Keeping the filter under
+# /Library/Printers avoids modifying SIP-protected /usr/libexec on macOS.
 sed \
   -e '/application\/vnd\.cups-command.*commandtoepson/d' \
-  -e 's/rastertogutenprint\.5\.3/rastertoepsonl120-gutenprint/g' \
+  -e "s|rastertogutenprint\.5\.3|$CUPS_FILTER|g" \
   "$RAW_PPD" > "$PPD"
 rm -f "$RAW_PPD"
 
@@ -123,7 +123,7 @@ grep -Fq '*ModelName:     "Epson L120"' "$PPD" || {
   echo "ERROR: generated PPD is not for Epson L120." >&2
   exit 1
 }
-grep -Fq 'application/vnd.cups-raster 100 rastertoepsonl120-gutenprint' "$PPD" || {
+grep -Fq "application/vnd.cups-raster 100 $CUPS_FILTER" "$PPD" || {
   echo "ERROR: generated PPD does not reference the project filter." >&2
   exit 1
 }
