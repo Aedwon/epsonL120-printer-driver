@@ -32,6 +32,7 @@ PPD="$PPD" /usr/libexec/cups/filter/cgpdftoraster \
   < "$PDF" > "$RASTER"
 
 rm -f "$OUTPUT"
+PPD="$PPD" \
 STP_DATA_PATH="$XMLDIR" \
 STP_MODULE_PATH="$LIBDIR:$SOURCE/src/main" \
 DYLD_LIBRARY_PATH="$LIBDIR" \
