@@ -1,0 +1,107 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Existing version tag to release (for example v0.1.0)
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: Build and publish arm64 package
+    runs-on: macos-15
+    timeout-minutes: 45
+
+    steps:
+      - name: Resolve release tag
+        id: release
+        shell: bash
+        run: |
+          if [[ "${GITHUB_EVENT_NAME}" == "workflow_dispatch" ]]; then
+            TAG='${{ inputs.tag }}'
+          else
+            TAG="${GITHUB_REF_NAME}"
+          fi
+
+          if [[ ! "$TAG" =~ ^v[0-9]+\.[0-9]+\.[0-9]+([.-][0-9A-Za-z.-]+)?$ ]]; then
+            echo "Invalid release tag: $TAG" >&2
+            exit 1
+          fi
+
+          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+          echo "version=${TAG#v}" >> "$GITHUB_OUTPUT"
+
+      - name: Check out release tag
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ steps.release.outputs.tag }}
+
+      - name: Confirm Apple Silicon runner
+        run: |
+          uname -a
+          test "$(uname -m)" = "arm64"
+
+      - name: Install build prerequisite
+        run: brew install pkg-config
+
+      - name: Validate shell syntax
+        run: |
+          bash -n \
+            build.sh \
+            install.sh \
+            package.sh \
+            test-filter.sh \
+            uninstall.sh \
+            packaging/postinstall \
+            packaging/setup-queue
+
+      - name: Build Gutenprint and L120 PPD
+        run: ./build.sh
+
+      - name: Run offline render test
+        run: ./test-filter.sh
+
+      - name: Build unsigned release package
+        env:
+          PACKAGE_VERSION: ${{ steps.release.outputs.version }}
+        run: ./package.sh
+
+      - name: Verify release checksums
+        run: |
+          cd dist
+          shasum -a 256 -c SHA256SUMS.txt
+
+      - name: Publish GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ steps.release.outputs.tag }}
+          VERSION: ${{ steps.release.outputs.version }}
+        run: |
+          PKG="dist/EpsonL120-macOS-arm64-${VERSION}.pkg"
+          SOURCE="dist/gutenprint-5.3.5-source.tar.xz"
+          HASHES="dist/SHA256SUMS.txt"
+
+          test -s "$PKG"
+          test -s "$SOURCE"
+          test -s "$HASHES"
+
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            echo "Release $TAG already exists; refusing to overwrite it." >&2
+            exit 1
+          fi
+
+          gh release create "$TAG" \
+            "$PKG" \
+            "$SOURCE" \
+            "$HASHES" \
+            --verify-tag \
+            --title "Epson L120 macOS driver $TAG" \
+            --notes-file RELEASE_NOTES.md
