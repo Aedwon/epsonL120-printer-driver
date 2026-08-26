@@ -12,7 +12,8 @@ Physical printing has been verified on a real Epson L120 over USB for:
 - cyan, magenta, yellow, and black output;
 - RGB red, green, and blue output;
 - native Apple Silicon (`arm64`) execution;
-- the installed `Epson_L120` CUPS queue using `lp -d Epson_L120 test.pdf`.
+- the installed `Epson_L120` CUPS queue using `lp -d Epson_L120 test.pdf`;
+- a clean install from the unsigned `EpsonL120-macOS-arm64-0.1.0.pkg`, followed by successful physical printing through the package-created CUPS queue.
 
 The complete verified path is:
 
@@ -25,7 +26,7 @@ macOS application / lp
         -> Epson L120
 ```
 
-An unsigned `.pkg` packaging path is included for free distribution without an Apple Developer Program membership. The package itself still needs physical installation testing before it should be treated as a release artifact.
+The unsigned `.pkg` packaging path has been physically install-and-print verified on Apple Silicon macOS without an Apple Developer Program membership.
 
 The PPD/filter driver architecture used here is deprecated in CUPS and may require future maintenance.
 
