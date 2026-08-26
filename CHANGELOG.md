@@ -2,6 +2,13 @@
 
 All notable user-facing changes are documented here.
 
+## Unreleased
+
+### Added
+
+- Explicit GPL-2.0-or-later license for the project's original code and documentation.
+- Contribution licensing guidance clarifying that submitted changes are distributed under GPL-2.0-or-later.
+
 ## 0.1.0 — 2026-08-27
 
 First physically verified package release candidate for Apple Silicon macOS.

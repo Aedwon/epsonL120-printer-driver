@@ -118,6 +118,12 @@ See [DEVELOPMENT.md](DEVELOPMENT.md) for source builds, offline verification, pa
 
 See [CHANGELOG.md](CHANGELOG.md) for release history and [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) for Gutenprint redistribution information.
 
+## License
+
+Original project code and documentation are licensed under **GPL-2.0-or-later**. See [LICENSE](LICENSE).
+
+Third-party components retain their own copyright and license terms. See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md), including the upstream licensing information for Gutenprint.
+
 ## Important limitation
 
 The PPD/filter driver architecture used here is deprecated by CUPS. Version 0.1.0 solves the practical Epson L120 printing problem on the environment tested, but this architecture may require replacement or substantial maintenance as future macOS/CUPS releases remove legacy driver support.

@@ -37,6 +37,8 @@ Version 0.1.x targets the Epson L120 on Apple Silicon macOS and is physically ve
 
 ## Packaging and licensing
 
+The original code and documentation in this repository are licensed under GPL-2.0-or-later. By submitting a contribution, you agree that your contribution may be distributed under that same license.
+
 The release package redistributes Gutenprint components. Keep `THIRD_PARTY_NOTICES.md`, the bundled Gutenprint notices, and the corresponding-source release artifact intact when changing packaging behavior.
 
 Do not publish a binary release package without the corresponding Gutenprint source archive and checksum file produced by `package.sh`.
