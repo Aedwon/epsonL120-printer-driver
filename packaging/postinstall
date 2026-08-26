@@ -1,0 +1,11 @@
+#!/bin/bash
+set -euo pipefail
+
+SETUP="/Library/Printers/EpsonL120/bin/setup-queue"
+
+if [[ ! -x "$SETUP" ]]; then
+  echo "ERROR: queue setup helper is missing: $SETUP" >&2
+  exit 1
+fi
+
+exec "$SETUP"
